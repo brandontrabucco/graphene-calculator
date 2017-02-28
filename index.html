@@ -1,0 +1,42 @@
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Graphene Calculator</title>
+    <meta name="description" content="Graphene Calculator">
+    <meta name="author" content="Brandon Trabucco">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/mathjs/3.9.3/math.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/84/three.min.js"></script>
+    <script src="three.meshline.js"></script>
+    <script src="three.orbitcontrols.js"></script>
+  </head>
+
+  <body>
+    <div id="equation-panel" class="panel" ng-app="EquationApp" ng-controller="EquationController">
+      <h2 class="equation-head equation-block">Equations</h2>
+
+      <ul class="equation-list">
+        <li class="equation equation-block" ng-repeat="e in equations track by $index">
+          <a href="#" class="equation-delete" ng-click="delete()">X</a>
+          <span><input class="equation-text" type="text" ng-model="e.text" ng-change="update()"/></span>
+        </li>
+      </ul>
+
+      <a href="#" class="equation-block" ng-click="add()">...</a>
+    </div>
+
+    <div id="graph-panel" class="panel">
+      <canvas id="equation-graph"/>
+    </div>
+
+    <script src="panel.js"></script>
+    <script src="equation.js"></script>
+    <script src="plane.js"></script>
+    <script src="curve.js"></script>
+    <script src="graph.js"></script>
+  </body>
+</html>
